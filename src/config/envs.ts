@@ -7,6 +7,7 @@ interface EnvVars {
   STRIPE_WEBHOOK_SECRET: string;
   SUCCESS_URL: string;
   CANCEL_URL: string;
+  NATS_SERVERS: string;
 }
 
 const envsSchema = joi
@@ -16,6 +17,7 @@ const envsSchema = joi
     STRIPE_WEBHOOK_SECRET: joi.string().required(),
     SUCCESS_URL: joi.string().required(),
     CANCEL_URL: joi.string().required(),
+    NATS_SERVERS: joi.string().required(),
   })
   .unknown(true);
 
@@ -33,4 +35,5 @@ export const envs = {
   stripeWebhookSecret: envVars.STRIPE_WEBHOOK_SECRET,
   successUrl: envVars.SUCCESS_URL,
   cancelUrl: envVars.CANCEL_URL,
+  natsServers: envVars.NATS_SERVERS,
 };

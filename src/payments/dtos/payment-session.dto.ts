@@ -16,7 +16,7 @@ export class PaymentSessionDto {
   @ArrayMinSize(1)
   @ValidateNested({ each: true })
   @Type(() => PaymentSessionItemDto)
-  items: PaymentSessionDto[];
+  items: PaymentSessionItemDto[];
 }
 
 export class PaymentSessionItemDto {

@@ -19,8 +19,8 @@ export class PaymentsService {
         },
       },
       mode: 'payment',
-      success_url: 'http://localhost:3003/payments/success',
-      cancel_url: 'http://localhost:3003/payments/cancel',
+      success_url: envs.successUrl,
+      cancel_url: envs.cancelUrl,
       line_items: items.map((item) => ({
         price_data: {
           currency,
@@ -40,7 +40,7 @@ export class PaymentsService {
     const sig = req.headers['stripe-signature'];
 
     let event: Stripe.Event;
-    const endpointSecret = 'whsec_m1dfkO7FZWI0ukVHq4YdBv7PnDbGe7Cm';
+    const endpointSecret = envs.stripeWebhookSecret;
 
     try {
       event = this.stripe.webhooks.constructEvent(
